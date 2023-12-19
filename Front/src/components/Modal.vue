@@ -1,14 +1,10 @@
 <template>
-  <div class="modal__activator" @click="toggleModalStatus">
-    <slot name="trigger"></slot>
-  </div>
-
   <Teleport to="body">
     <div class="modal">
       <Transition>
         <div v-if="modalOpened" class="modal__wrapper">
           <div ref="target" class="modal__content">
-            <slot name="modal" :close="toggleModalStatus"> </slot>
+            <slot name="modal"> </slot>
           </div>
         </div>
       </Transition>

@@ -40,24 +40,25 @@
   </main>
 </template>
 <script setup lang="ts">
+import { computed, onMounted, ref } from 'vue'
+import { storeToRefs } from 'pinia'
+
+import { useStudentsStore } from './stores/studentsStore'
+import { useSubjectsStore } from './stores/subjectsStore'
+import { useFilesStore } from './stores/filesStore'
+
 import FileUploader from './components/FileUploader.vue'
 import BarChart from './components/BarChart.vue'
 import DataTable from './components/DataTable.vue'
 import Modal from './components/Modal.vue'
-import { useStudentsStore } from './stores/studentsStore'
-import { useSubjectsStore } from './stores/subjectsStore'
+
+import type { IStudentGrades } from './types'
 
 const { avgStudentsGrades, selectedGrades } = storeToRefs(useStudentsStore())
 const { getAverageStudentsGrades, getSelectedGrades } = useStudentsStore()
 
 const { avgSubjectsGrades, decileGrades } = storeToRefs(useSubjectsStore())
 const { getAverageSubjectsGrades, getDecileGrades } = useSubjectsStore()
-
-import { computed, onMounted, ref } from 'vue'
-
-import { useFilesStore } from './stores/filesStore'
-import { storeToRefs } from 'pinia'
-import type { IStudentGrades } from './types'
 
 const { uploadFile } = useFilesStore()
 
